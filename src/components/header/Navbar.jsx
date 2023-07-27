@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import CartWidget from './CartWidget'
-import './Header.css'
+import './Navbar.css'
+import LinksNavbar from './LinksNavbar';
 
 const Navbar = () => {
   const [menuOpen,setMenuOpen]=useState(false);
@@ -17,12 +18,12 @@ const Navbar = () => {
         </div>
         <h3 className="title">ClothingUrban</h3>
         <ul className={menuOpen? "open":""}>
-          <li><a href="./">Lo último</a></li>
-          <li><a href="./">Hombre</a></li>
-          <li><a href="./">Mujer</a></li>
-          <li><a href="./">Contacto</a></li>
+          <LinksNavbar link="./" text="Lo último"/>
+          <LinksNavbar link="./" text="Hombre"/>
+          <LinksNavbar link="./" text="Mujer"/>
+          <LinksNavbar link="./" text="Contacto"/>
         </ul>
-        <CartWidget />
+        <CartWidget item={10}/>
     </nav>
   )
 }

@@ -1,4 +1,5 @@
-import './ItemListContainer.css'
+import './ItemListContainer.css';
+import PropTypes from 'prop-types';
 
 const ItemListContainer = ({greeting}) => {
   return (
@@ -7,5 +8,8 @@ const ItemListContainer = ({greeting}) => {
     </div>
   );
 }
+ItemListContainer.propTypes={
+  greeting: PropTypes.string.isRequired
+};
 
 export default ItemListContainer

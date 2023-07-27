@@ -1,0 +1,21 @@
+.cart{
+    position: absolute;
+    color: #eef1f6;
+    right: 2rem;
+    top: 1rem;
+}
+.cart svg{
+    fill: #eef1f6;
+    cursor: pointer;
+}
+.cart p{
+    position: relative;
+    background: #eef1f6;
+    border-radius: 0.5rem;
+    width: 2rem;
+    color: #407c87;
+    font-size: 1.2rem;
+    top: -1.4rem;
+    left: 2rem;
+    text-align: center;
+}
