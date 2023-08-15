@@ -1,0 +1,27 @@
+.counter{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.button-add{
+    justify-self: center;
+}
+.button-add .button{
+    width: 4rem;
+    height: 1rem;
+}
+.counter .controls{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: center;
+    align-content: center;
+}
+.counter .controls .number{
+    text-align: center;
+}
+.button{
+    color: #eef1f6;
+    background: #407c87;
+    border: transparent;
+    border-radius: .5rem;
+    cursor: pointer;
+}

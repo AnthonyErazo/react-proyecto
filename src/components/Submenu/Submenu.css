@@ -1,0 +1,23 @@
+.submenu {
+    position: absolute;
+    top: 2.5rem;
+    left: 0;
+    display: none;
+    background-color: #407c87;
+    border: 1px solid #eef1f6;
+    border-top: 0px;
+    width: 8rem;
+    height: auto;
+}
+.submenu-item {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.submenu-item-link{
+    color: #eef1f6;
+    text-decoration: none;
+}
+.submenu-item-link:hover{
+    border-bottom: 2px solid #eef1f6;
+}

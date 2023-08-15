@@ -1,0 +1,36 @@
+.card-product{
+    background-color: #fff;
+    width: 90%;
+    height: 400px;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    margin: 10px auto;
+    padding: 10px;
+    object-fit: cover;
+}
+.card-product img{
+    justify-self: center;
+    align-self: center;
+}
+.card-product .info{
+    overflow: hidden;
+    display: grid;
+}
+.card-product .info P:nth-child(2){
+    height: 5rem;
+    overflow: hidden;
+}
+.card-product .info P:nth-child(3){
+    font-size: 1.2rem;
+    text-align: center;
+}
+.ver-mas{
+    background-color: #407c87;
+    border: transparent;
+    border-radius: .5rem;
+}
+.ver-mas-link{
+    color: #eef1f6;
+    list-style: none;
+    text-decoration: none;
+}
