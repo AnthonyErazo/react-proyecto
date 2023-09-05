@@ -7,8 +7,8 @@ const Item = ({ item }) => {
             <img src={item.image} alt={item.name} />
             <div className="item-info">
                 <h1>{item.name}</h1>
+                <p>Precio: ${item.price}</p>
                 <p>{item.description}</p>
-                <p>{item.price}</p>
                 <ItemCount stock={item.stock} initial={1} onAdd={(q) => console.log(q)} />
             </div>
         </div>

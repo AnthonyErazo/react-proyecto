@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import './ModalCart.css'
 import { useCartContext } from '../../context/cart';
 import ModalCartProduct from '../ModalCartProduct/ModalCartProduct';
+import './ModalCart.css';
 
 const ModalCart = () => {
   const {cartProduct}=useCartContext();
@@ -25,7 +25,7 @@ const ModalCart = () => {
             );
           })}
         </div>
-        <Link className='go-cart-link' to={'./carrito'}>
+        <Link className='go-cart-link' to={'/carrito'}>
             <button className='go-cart'>
                 Ir al carrito
             </button>

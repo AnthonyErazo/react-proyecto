@@ -2,7 +2,9 @@
     margin: auto;
     width: 90%;
     background-color: red;
+    display: flex;
 }
 .item-container h1{
     text-align: center;
+    text-transform: uppercase;
 }
