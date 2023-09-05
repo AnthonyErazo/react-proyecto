@@ -117,6 +117,6 @@
 .go-cart-modal:hover{
     border: 2px solid #407c87;
 }
-.go-cart-modal-link:active>.go-cart-modal {
+.go-cart-modal-link:active > .go-cart-modal {
     transform: scale(.95);
 }
