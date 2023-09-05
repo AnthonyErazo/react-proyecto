@@ -1,6 +1,6 @@
 import { useModalContext } from '../../context/modal';
 import { Link } from 'react-router-dom';
-import './ModalView.css';
+// import "./ModalView.css";
 
 const ModalView = () => {
     const {viewProduct,modalButtonX,modalViewButton}=useModalContext();
