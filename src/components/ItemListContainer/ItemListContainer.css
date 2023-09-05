@@ -2,11 +2,9 @@
     text-align: center;
 }
 .product-container{
-    min-height: 100vh;
-    width: 90%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-    grid-template-rows: repeat(auto-fill, 450px);
-    gap: 20px;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    gap: .5rem;
 }

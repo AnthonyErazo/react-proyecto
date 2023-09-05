@@ -1,30 +1,29 @@
-import { useEffect, useState } from 'react'
+import {useState } from 'react'
 import CartWidget from '../CartWidget/CartWidget'
 import './Navbar.css'
 import { Link } from 'react-router-dom';
 import Submenu from '../Submenu/Submenu';
-import { getItems } from '../../routes/mockasync';
+import { useProductContext } from '../../context/product';
+import { useCartContext } from '../../context/cart';
+import ModalCart from '../ModalCart/ModalCart';
 
 const Navbar = () => {
   const [menuOpen,setMenuOpen]=useState(false);
   const [clickMenu,setClickMenu]=useState(false);
   const [submenuItems, setSubmenuItems] = useState([]);
-  const [items, setItems] = useState([]);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+  const {products}=useProductContext();
+  const {cartNum,cartAside}=useCartContext();
   const categorys=new Set();
   const subCategorys=new Set();
-  useEffect(()=>{
-      getItems()
-          .then(item=>setItems(item))
-          .catch(error=>console.error(error));
-  },[]);
-  items.forEach(element => {
+  products.forEach(element => {
     if(element.category=="accesorio"){
       subCategorys.add(element.subcategory);
     }else if(element.category!="zapatilla"){
       categorys.add(element.category);
     }
   });
+  
   const handleMouseEnter = (category) => {
     setSubmenuItems(category);
   };
@@ -78,9 +77,10 @@ const Navbar = () => {
             Zapatillas
           </Link></li>
         </ul>
-        <CartWidget item={0}/>
+        <CartWidget item={cartNum}/>
     </nav>
     {isOverlayVisible && <div className="overlay"></div>}
+    {cartAside?<ModalCart />:<></>}
   </>
   )
 }

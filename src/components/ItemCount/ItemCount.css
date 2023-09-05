@@ -1,13 +1,37 @@
+.button{
+    color: #eef1f6;
+    background: #407c87;
+    border: 2px solid #407c87;
+    cursor: pointer;
+}
 .counter{
     display: grid;
     grid-template-columns: 50% 50%;
+    height: 100%;
+}
+.counter-control{
+    height: 1.7rem;
+    width: 80%;
+    font-size: 1.1rem;
+    justify-self: center;
+    align-self: center;
 }
 .button-add{
     justify-self: center;
+    align-self: center;
+    background-color: cadetblue;
+    width: 80%;
 }
 .button-add .button{
-    width: 4rem;
-    height: 1rem;
+    height: 2rem;
+    width: 100%;
+}
+.button-add .button:hover{
+    color: #407c87;
+    background: #eef1f6;
+}
+.button:active{
+    transform: scale(.95);
 }
 .counter .controls{
     display: grid;
@@ -16,12 +40,14 @@
     align-content: center;
 }
 .counter .controls .number{
-    text-align: center;
+    align-self: center;
+    justify-self: center;
+    color: #111;
 }
-.button{
-    color: #eef1f6;
-    background: #407c87;
-    border: transparent;
-    border-radius: .5rem;
-    cursor: pointer;
+.disabled{
+    opacity: .5;
+    cursor: initial;
+}
+.disabled:active{
+    transform: none;
 }

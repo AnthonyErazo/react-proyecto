@@ -1,36 +1,103 @@
-.card-product{
+.card-product {
+    width: calc(25% - 20px);
+    border: .15rem solid transparent;
+    padding: .2rem;
+    margin: 0 10px 20px 0;
     background-color: #fff;
-    width: 90%;
-    height: 400px;
-    display: grid;
-    grid-template-rows: 50% 50%;
-    margin: 10px auto;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card-product:hover {
+    box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.2);
+    border: .15rem solid #407c87;
+}
+
+.card-product .img-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-product img {
+    width: 100%;
     object-fit: cover;
 }
-.card-product img{
-    justify-self: center;
-    align-self: center;
-}
-.card-product .info{
-    overflow: hidden;
+
+.card-product .info {
     display: grid;
+    grid-template-rows: 40% 20% 40%;
 }
-.card-product .info P:nth-child(2){
-    height: 5rem;
-    overflow: hidden;
-}
-.card-product .info P:nth-child(3){
+
+.card-product .info h1 {
     font-size: 1.2rem;
+    font-weight: 600;
+    font-style: italic;
+    text-transform: uppercase;
     text-align: center;
+    height: 3.2rem;
+    align-self: center;
+    padding-top: .3rem;
+    color: #111;
 }
-.ver-mas{
+
+.card-product .info p{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: .5;
+    align-self: flex-start;
+    color: #111;
+}
+
+.ver-mas-link {
+    position: absolute;
+    bottom: -2rem;
+    width: 80%;
+    height: 2rem;
+    transition: all 400ms ease;
+}
+
+.ver-mas {
+    cursor: pointer;
+    font-size: 1.1rem;
+    opacity: .8;
     background-color: #407c87;
-    border: transparent;
-    border-radius: .5rem;
-}
-.ver-mas-link{
+    border: 2px solid #407c87;
     color: #eef1f6;
-    list-style: none;
-    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+
+.ver-mas:hover {
+    background-color: #eef1f6;
+    color: #407c87;
+}
+
+.ver-mas:active {
+    transform: scale(.95);
+}
+
+.ocultar-ver-mas {
+    transition: all 300ms ease;
+    transform: translateY(-3rem);
+}
+
+@media (max-width:990px){
+    .card-product {
+        width: calc(33% - 20px);
+    }
+}
+@media (max-width:750px){
+    .card-product {
+        width: calc(50% - 30px);
+    }
+}
+@media (max-width:530px){
+    .card-product {
+        width: 100%;
+    }
 }

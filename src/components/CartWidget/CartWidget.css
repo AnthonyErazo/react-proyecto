@@ -3,6 +3,7 @@
     color: #eef1f6;
     right: 2rem;
     top: 1rem;
+    cursor: pointer;
 }
 .cart svg{
     fill: #eef1f6;

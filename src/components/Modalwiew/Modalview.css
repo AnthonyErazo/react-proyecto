@@ -1,0 +1,122 @@
+@keyframes modal {
+    from {
+        transform: translateY(100vh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+.window-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(2px);
+    background-color: transparent;
+    z-index: 101;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+}
+
+.window-container {
+    position: relative;
+    background-color: #fff;
+    width: 800px;
+    height: auto;
+    margin: auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    animation-name: modal;
+    animation-duration: .5s;
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .4);
+    z-index: 101;
+}
+
+.close {
+    transition: all 800ms ease;
+    transform: translateY(-100vh);
+}
+
+.close-button {
+    position: absolute;
+    border-radius: 50%;
+    top: -15px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+.iconX {
+    fill: rgb(54, 54, 54);
+}
+.product-modal{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.product-view-img{
+    width: 100%;
+    display: flex;
+}
+.product-view-img img{
+    width: 22vh;
+}
+.product-view-info{
+    display: flex;
+    flex-direction: column;
+}
+.product-view-info h1{
+    color: #407c87;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.product-view-info h2{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.product-view-info p:nth-child(3){
+    opacity: .8;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+.product-view-info p:nth-child(4){
+    opacity: .8;
+    font-size: 1.2rem;
+}
+.go-cart-modal-link{
+    cursor: pointer;
+    margin: auto;
+}
+.go-cart-modal{
+    cursor: pointer;
+    background: #407c87;
+    border: none;
+    height: 4.2vh;
+    width: 14vh;
+    font-size: 1.8vh;
+    text-decoration: none;
+    color: #eef1f6;
+}
+.go-cart-modal-link:hover > .go-cart-modal,
+.go-cart-modal-link:hover{
+    color: #407c87;
+    background: #eef1f6;
+}
+.go-cart-modal:hover{
+    border: 2px solid #407c87;
+}
+.go-cart-modal-link:active>.go-cart-modal {
+    transform: scale(.95);
+}

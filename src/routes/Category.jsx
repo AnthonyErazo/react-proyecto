@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom"
 import { getItemsCategory } from "./mockasync";
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 import Loading from "../components/Loading/Loading";
-import Navbar from "../components/Navbar/Navbar";
 
 const Category = () => {
     const [isLoading,setIsLoading]=useState(true);

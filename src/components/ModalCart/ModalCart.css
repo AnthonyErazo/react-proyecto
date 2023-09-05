@@ -1,0 +1,52 @@
+.modal-cart-container{
+    background-color: #fefefe;
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, .4);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    height: 100%;
+    width: 22rem;
+    display: grid;
+    grid-template-rows: 85% 15%;
+}
+.cart-modal-content{
+    padding-top: 3.75rem;
+    overflow-y: scroll;
+}
+
+.go-cart-link{
+    cursor: pointer;
+    justify-self: center;
+    align-self: center;
+    border: 2px solid #407c87;
+    height: 2rem;
+    width: 60%;
+}
+.go-cart{
+    cursor: pointer;
+    background: #407c87;
+    border: none;
+    height: 100%;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #eef1f6;
+}
+.go-cart-link:hover > .go-cart,
+.go-cart-link:hover{
+    color: #407c87;
+    background: #eef1f6;
+}
+.go-cart-link:active {
+    transform: scale(.95);
+}
+.empty-modal-cart{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}

@@ -3,17 +3,15 @@ import './Item.css'
 
 const Item = ({ item }) => {
     return (
-        <>
-            {item.map((i) => {
-                return (
-                    <div key={i.id} className="item-container">
-                        <h1>{i.name}</h1>
-                        <p>{i.description}</p>
-                        <p>{i.price}</p>
-                        <ItemCount stock={i.stock} initial={1} onAdd={(q) => console.log(q)} />
-                    </div>);
-            })}
-        </>
+        <div className="item-container">
+            <img src={item.image} alt={item.name} />
+            <div className="item-info">
+                <h1>{item.name}</h1>
+                <p>{item.description}</p>
+                <p>{item.price}</p>
+                <ItemCount stock={item.stock} initial={1} onAdd={(q) => console.log(q)} />
+            </div>
+        </div>
     );
 }
 

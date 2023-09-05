@@ -1,6 +1,7 @@
 .item-container{
     margin: auto;
     width: 90%;
+    background-color: red;
 }
 .item-container h1{
     text-align: center;
