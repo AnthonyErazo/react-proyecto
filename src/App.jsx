@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import Loading from './components/Loading/Loading';
-import ModalView from './components/Modalwiew/ModalView';
+import ModalView from '../components/ModalWiew/ModalView.jsx';
 import { useModalContext } from './context/modal';
 import { useProductContext } from './context/product';
 import { useParams } from 'react-router-dom';
