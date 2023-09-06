@@ -5,12 +5,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: fixed;
     top: 0;
     left: 0;
+    z-index: 999;
+    position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: 999;
 }
 
 .loading-spinner {

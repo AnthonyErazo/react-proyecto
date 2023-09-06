@@ -1,15 +1,28 @@
+import { Link } from 'react-router-dom'
+import EliminatedItem from '../Elimiteditem/EliminatedItem'
+import ItemCount from '../ItemCount/ItemCount'
 import './CartProduct.css'
 
-const CartProduct = ({image,name,price,cantidad}) => {
+const CartProduct = ({id,image,imagen2,name,price,cantidad,stock}) => {
   return (
     <div className='cart-product-container'>
-        <div className='product-cart-img'>
+        <Link className='product-cart-img'>
             <img src={image} alt={name} />
+            <img src={imagen2} alt={name} />
+        </Link>
+        <h2>{name}</h2>
+        <p>${price}</p>
+        <div>
+            <EliminatedItem 
+            id={id} 
+            />
+            <ItemCount
+            id={id}
+            stock={stock}
+            initial={cantidad}
+            />
         </div>
-        <div className='product-cart-info'>
-            <h2>{name}</h2>
-            <p>{price}</p>
-        </div>
+        <p>${price*cantidad}</p>
     </div>
   )
 }

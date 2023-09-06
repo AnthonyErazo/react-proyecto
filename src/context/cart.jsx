@@ -6,8 +6,20 @@ const CartProvider = ({children}) => {
     const [cartAside,setCartAside]=useState(false);
     const [cartProduct,setCartProduct]=useState([]);
     const [cartNum,setCartNum]=useState(0);
+    const clearCart =()=>{
+        setCartProduct([]);
+        setCartNum(0);
+    }
     const cartAsideView = ()=>{
         setCartAside(!cartAside);
+    }
+    const cantidadPorId=(idProduct)=>{
+        const productCart = cartProduct.find(p=>{
+            if(p.id==idProduct){
+                return p;
+            }
+        });
+        return productCart?productCart.cantidad:0;
     }
     const cartAddProduct=(product,quantity)=>{
         if(cartProduct.find((p)=>p.id==product.id)){
@@ -34,7 +46,9 @@ const CartProvider = ({children}) => {
             cartProduct,
             cartAddProduct,
             eliminateCartProduct,
-            cartNum
+            cartNum,
+            cantidadPorId,
+            clearCart
         }}>
         {children}
     </CartContext.Provider>

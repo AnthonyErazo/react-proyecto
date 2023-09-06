@@ -19,7 +19,7 @@
 .button-add{
     justify-self: center;
     align-self: center;
-    background-color: cadetblue;
+    background-color: #407c87;
     width: 80%;
 }
 .button-add .button{
@@ -50,4 +50,9 @@
 }
 .disabled:active{
     transform: none;
+}
+.button.disabled:hover{
+    transform: none;
+    color: #eef1f6;
+    background: #407c87;
 }

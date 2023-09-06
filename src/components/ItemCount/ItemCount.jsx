@@ -1,22 +1,34 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import './ItemCount.css';
 import { useModalContext } from "../../context/modal";
 import { useProductContext } from "../../context/product";
 import { useCartContext } from "../../context/cart";
+import { useLocation } from "react-router-dom";
 
 const ItemCount = ({id,stock,initial}) => {
     const [quantity,setQuantity]=useState(initial);
+    const [quantityLimit,setQuantityLimit]=useState(stock);
     const {modalViewProduct,modalViewButton}=useModalContext();
-    const {cartAddProduct}=useCartContext();
+    const {cantidadPorId,cartAddProduct,cartProduct}=useCartContext();
     const {buscarId}=useProductContext();
+    const location2=useLocation();
+    useEffect(()=>{
+        setQuantityLimit(stock-cantidadPorId(id));
+    },[cartProduct]);
     const increment=()=>{
-        if(quantity<stock){
+        if(quantity<quantityLimit){
             setQuantity(quantity+1)
+            if(location2.pathname=='/carrito'){
+                cartAddProduct(buscarId(id),quantity);
+            }
         }
     }
     const decrement=()=>{
         if(quantity>1){
             setQuantity(quantity-1)
+            if(location2.pathname=='/carrito'){
+                cartAddProduct(buscarId(id),quantity);
+            }
         }
     }
     const onAdd=()=>{
@@ -31,13 +43,13 @@ const ItemCount = ({id,stock,initial}) => {
             <div className="controls">
                 <button className={`button counter-control ${quantity==1?'disabled':''}`} onClick={decrement}>-</button>
                 <h4 className="number">{quantity}</h4>
-                <button className={`button counter-control ${quantity==stock?'disabled':''}`} onClick={increment}>+</button>
+                <button className={`button counter-control ${(quantity==quantityLimit)||(quantityLimit==0)?'disabled':''}`} onClick={increment}>+</button>
             </div>
-            <div className="button-add">
-                <button className="button" onClick={onAdd} disabled={!stock}>
+            {location2.pathname=='/carrito'?<></>:<div className="button-add">
+                <button className={`button ${quantityLimit==0?'disabled':''}`} onClick={onAdd} disabled={quantityLimit==0}>
                     Agregar
                 </button>
-            </div>
+            </div>}
         </div>
     )
 }

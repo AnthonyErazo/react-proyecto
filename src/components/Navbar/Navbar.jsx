@@ -1,7 +1,7 @@
 import {useState } from 'react'
 import CartWidget from '../CartWidget/CartWidget'
 import './Navbar.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Submenu from '../Submenu/Submenu';
 import { useProductContext } from '../../context/product';
 import { useCartContext } from '../../context/cart';
@@ -14,6 +14,7 @@ const Navbar = () => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const {products}=useProductContext();
   const {cartNum,cartAside}=useCartContext();
+  const location=useLocation();
   const categorys=new Set();
   const subCategorys=new Set();
   products.forEach(element => {
@@ -77,10 +78,10 @@ const Navbar = () => {
             Zapatillas
           </Link></li>
         </ul>
-        <CartWidget item={cartNum}/>
+        <CartWidget item={cartNum} enable={location.pathname === '/carrito'}/>
     </nav>
     {isOverlayVisible && <div className="overlay"></div>}
-    {cartAside?<ModalCart />:<></>}
+    {location.pathname === '/carrito' ? <></>: (cartAside ? <ModalCart /> : <></>) }
   </>
   )
 }

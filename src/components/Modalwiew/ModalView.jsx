@@ -23,7 +23,7 @@ const ModalView = () => {
                     <h2>{viewProduct.name}</h2>
                     <p>${viewProduct.price}</p>
                     <p>{viewProduct.description}</p>
-                    <Link to='/carrito' className='go-cart-modal-link'>
+                    <Link to='/carrito' className='go-cart-modal-link' onClick={modalViewButton}>
                         <button className='go-cart-modal'>
                             Ir al carrito
                         </button>

@@ -1,0 +1,17 @@
+.button-eliminated{
+    margin: auto;
+    width: 3vh;
+    height: 3vh;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: #fff;
+}
+.button-eliminated:active{
+    transform: scale(.95);
+}
+.button-eliminated:hover{
+    box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.6);
+}
+.button-eliminated svg{
+    fill: red;
+}

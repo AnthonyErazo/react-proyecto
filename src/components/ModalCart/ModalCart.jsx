@@ -4,7 +4,7 @@ import ModalCartProduct from '../ModalCartProduct/ModalCartProduct';
 import './ModalCart.css';
 
 const ModalCart = () => {
-  const {cartProduct}=useCartContext();
+  const {cartAsideView,cartProduct}=useCartContext();
   return (
     <aside className="modal-cart-container">
         <div className='cart-modal-content'>
@@ -25,7 +25,7 @@ const ModalCart = () => {
             );
           })}
         </div>
-        <Link className='go-cart-link' to={'/carrito'}>
+        <Link className='go-cart-link' to={'/carrito'} onClick={cartAsideView}>
             <button className='go-cart'>
                 Ir al carrito
             </button>

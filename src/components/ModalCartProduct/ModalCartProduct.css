@@ -20,20 +20,3 @@
     font-size: 1rem;
     opacity: .6;
 }
-.modal-cart-info .button-eliminated{
-    margin: auto;
-    width: 3vh;
-    height: 3vh;
-    cursor: pointer;
-    border: 1px solid transparent;
-    background: #fff;
-}
-.modal-cart-info .button-eliminated:active{
-    transform: scale(.95);
-}
-.modal-cart-info .button-eliminated:hover{
-    box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.6);
-}
-.button-eliminated svg{
-    fill: red;
-}

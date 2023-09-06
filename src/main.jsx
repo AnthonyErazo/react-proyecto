@@ -8,7 +8,7 @@ import Product from './routes/Product.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import ModalProvider from './context/modal.jsx'
 import CartProvider from './context/cart.jsx'
-import Cart from './routes/Cart.jsx'
+import Cart from './routes/Cart/Cart.jsx'
 import ScrollTop from './components/ScrollTop/ScrollTop.jsx'
 import ProductProvider from './context/product.jsx'
 

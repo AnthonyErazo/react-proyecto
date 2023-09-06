@@ -3,68 +3,78 @@ import './App.css'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import Loading from './components/Loading/Loading';
 import ModalView from './components/Modalwiew/ModalView';
-import { useModalContext } from './context/modal';
 import { useProductContext } from './context/product';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { firestore } from './firebase/client';
 
 function App() {
-  const {products,isLoadingProducts}=useProductContext();
-  const {modalButtonX}=useModalContext();
+  const { setProducts } = useProductContext();
   const [isLoading, setIsLoading] = useState(true);
-  const [productsCategory,setProductsCategory]=useState([]);
-  const params=useParams();
+  const [productsCategory, setProductsCategory] = useState([]);
+  const [isProductsSet, setIsProductsSet] = useState(false);
+  const params = useParams();
+  const location1 = useLocation();
+
   useEffect(() => {
     setIsLoading(true);
-    const productPromises = products.map((product) => {
+    let docRef;
+    if (location1.pathname === '/') {
+      docRef = query(
+        collection(firestore, "productos")
+      );
+    } else if (typeof params.subCategoriaId === 'undefined') {
+      docRef = query(
+        collection(firestore, "productos"),
+        where("category", "==", params.categoriaId)
+      );
+    } else {
+      docRef = query(
+        collection(firestore, "productos"),
+        where("subcategory", "==", params.subCategoriaId)
+      );
+    }
+    getDocs(docRef).then(snapshot => {
+      const filteredProducts = snapshot.docs
+          .map((doc) => doc.data())
+          .filter((product) => product.stock > 0);
+        setProductsCategory(filteredProducts);
+    }).catch((error) => console.error(error));
+
+  }, [params, location1]);
+
+  useEffect(() => {
+    if (productsCategory.length === 0) {
+      setIsLoading(true);
+      return;
+    }
+
+    const imagePromises = productsCategory.map((product) => {
       return new Promise((resolve) => {
         const img = new Image();
         img.onload = () => {
           resolve();
         };
-        img.onerror = () => {
-          resolve();
-        };
         img.src = product.image;
       });
     });
-    Promise.all(productPromises).then(() => {
+    if(!isProductsSet){
+      setProducts(productsCategory);
+      setIsProductsSet(true);
+    }
+
+    Promise.all(imagePromises).then(() => {
       setIsLoading(false);
     });
-  }, []);
-  useEffect(()=>{
-    console.log("rrr");
-    setIsLoading(true);
-    const filteredProducts = products.filter((product) => {
-      if(typeof params.subCategoriaId === 'undefined'){
-        return product.category === params.categoriaId;
-      }else{
-        return product.subcategory === params.subCategoriaId;
-      }
-    });
-    setProductsCategory(filteredProducts);
-    const productPromises = productsCategory.map((product) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => {
-          resolve();
-        };
-        img.onerror = () => {
-          resolve();
-        };
-        img.src = product.image;
-      });
-    });
-    Promise.all(productPromises).then(() => {
-      setIsLoading(false);
-    });
-  },[params]);
+  }, [productsCategory]);
   return (
     <>
-      {(isLoadingProducts||isLoading)?<Loading />:
-      <>
-      <ItemListContainer greeting={'Bienvenido!!'} items={(typeof params.categoriaId === 'undefined')&&(typeof params.subCategoriaId === 'undefined')?products:productsCategory} />
-    </>}
-      {modalButtonX?<ModalView />:<></>}
+      {isLoading ? <Loading /> :
+        <ItemListContainer
+          greeting={'Bienvenido!!'}
+          items={productsCategory}
+        />}
+      <ModalView />
     </>
   )
 }

@@ -1,8 +1,14 @@
 .item-container{
-    margin: auto;
+    margin: 2rem auto;
     width: 90%;
-    background-color: red;
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    overflow: hidden;
+}
+.item-img{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 .item-container h1{
     text-align: center;

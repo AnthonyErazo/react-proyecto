@@ -1,0 +1,17 @@
+.cart-product-container{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    text-align: center;
+}
+.product-cart-img{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.product-cart-img img{
+    width: 100%;
+}
+.cart-product-container h2{
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    text-align: start;
+}
