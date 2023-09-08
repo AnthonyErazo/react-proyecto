@@ -11,6 +11,7 @@ import CartProvider from './context/cart.jsx'
 import Cart from './routes/Cart/Cart.jsx'
 import ScrollTop from './components/ScrollTop/ScrollTop.jsx'
 import ProductProvider from './context/product.jsx'
+import Footer from './components/Footer/Footer.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <Route path='/*' element={<NotFound />} />
             </Routes>
             <ScrollTop />
+            <Footer />
           </BrowserRouter>
         </ModalProvider>
       </CartProvider>

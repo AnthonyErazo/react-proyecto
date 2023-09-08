@@ -4,10 +4,15 @@ import { useCartContext } from "../../context/cart"
 import './Cart.css'
 import Loading from "../../components/Loading/Loading";
 import { Link } from "react-router-dom";
+import Login from "../../components/Login/Login";
 
 const Cart = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [buyProducts, setBuyProducts] = useState(false);
   const {clearCart,cartProduct} =useCartContext();
+  const formRegister=()=>{
+    setBuyProducts(!buyProducts);
+  }
   useEffect(()=>{
     if (cartProduct.length == 0) {
       setIsLoading(false);
@@ -36,6 +41,11 @@ const Cart = () => {
   },[cartProduct]);
   return (
     <>
+    <Link to={'/'}>
+        <button className="regresar-inicio">
+          Regresar
+        </button>
+      </Link>
     {isLoading?<Loading />:
     <div className="cart-container">
       {cartProduct.length==0?
@@ -71,14 +81,17 @@ const Cart = () => {
       <button className="clear-cart" onClick={clearCart}>
         Vaciar productos
       </button>
+      <button className="clear-cart" onClick={formRegister}>
+        Realizar Compra
+      </button>
       </>
       }
-      <Link to={'/'}>
-        <button className="regresar-inicio">
-          Regresar
-        </button>
-      </Link>
-    </div>}</>
+    </div>}
+    <Login 
+    buyProducts={buyProducts}
+    formRegister={formRegister}
+    />
+    </>
   )
 }
 
