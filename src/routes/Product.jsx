@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../firebase/client";
 import ModalView from "../components/Modalwiew/ModalView";
-import CarrucelProduct from "../components/CarrucelProduct/CarrucelProduct";
 
 
 const Product = () => {
@@ -49,7 +48,6 @@ const Product = () => {
     return (
         <>
             {isLoading?<Loading />:<Item item={item} />}
-            <CarrucelProduct />
             <ModalView />
         </>
     )

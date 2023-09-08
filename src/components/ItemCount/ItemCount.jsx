@@ -14,21 +14,27 @@ const ItemCount = ({id,stock,initial}) => {
     const location2=useLocation();
     useEffect(()=>{
         setQuantityLimit(stock-cantidadPorId(id));
+        if(location2.pathname=='/carrito'){
+            setQuantity(cantidadPorId(id));
+            setQuantityLimit(stock);
+        }
     },[cartProduct]);
     const increment=()=>{
+        if(location2.pathname=='/carrito'&&quantity<quantityLimit){
+            cartAddProduct(buscarId(id),1);
+            return
+        }
         if(quantity<quantityLimit){
             setQuantity(quantity+1)
-            if(location2.pathname=='/carrito'){
-                cartAddProduct(buscarId(id),quantity);
-            }
         }
     }
     const decrement=()=>{
+        if(location2.pathname=='/carrito'&&quantity>1){
+            cartAddProduct(buscarId(id),-1);
+            return
+        }
         if(quantity>1){
             setQuantity(quantity-1)
-            if(location2.pathname=='/carrito'){
-                cartAddProduct(buscarId(id),quantity);
-            }
         }
     }
     const onAdd=()=>{

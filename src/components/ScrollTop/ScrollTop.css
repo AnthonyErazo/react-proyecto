@@ -1,29 +1,58 @@
+@keyframes popup {
+    0% {
+        width: 0;
+        height: 0;
+    }
+
+    50% {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    100% {
+        width: 4rem;
+        height: 4rem;
+    }
+}
 .scroll-to-top{
     position: fixed;
-    bottom: 3rem;
-    right: 3rem;
+    bottom: 4rem;
+    right: 4rem;
 }
 .button-to-top{
     width: 0rem;
     height: 0rem;
-    background: #16578b;
+    background: #407c87;
     cursor: pointer;
     transition: 0.2s;
     position: absolute;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
-    z-index: -1;
+    z-index: -100;
 }
 .button-to-top:hover{
-    box-shadow: 0 0 25px #16578b;
+    box-shadow: 0 0 25px #407c87;
 }
-.button-to-top i{
+.button-to-top svg{
     position: absolute;
     font-size: 25px;
-    top: 50%;
-    left: 50%;
+    top: 45%;
+    left: 55%;
     transform: translate(-50%, -50%) scale(0);
-    color: #fff;
+    color: #111;
     transition: 0.2s;
+}
+.show {
+    z-index: 10;
+}
+
+.show .button-to-top {
+    animation: popup 0.3s ease-in-out;
+    width: 4rem;
+    height: 4rem;
+    z-index: 11;
+}
+
+.show svg {
+    fill: #fff;
+    transform: rotate(270deg) translate(50%, -50%) scale(1);
 }

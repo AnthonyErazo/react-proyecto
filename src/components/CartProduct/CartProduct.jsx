@@ -12,7 +12,7 @@ const CartProduct = ({id,image,imagen2,name,price,cantidad,stock}) => {
         </Link>
         <h2>{name}</h2>
         <p>${price}</p>
-        <div>
+        <div className='cart-count'>
             <EliminatedItem 
             id={id} 
             />

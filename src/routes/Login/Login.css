@@ -11,7 +11,7 @@
     justify-content: center;
     overflow: hidden;
     flex-direction: column;
-    display: none;
+    display: flex;
 }
 .background{
     width: 430px;
@@ -67,9 +67,6 @@ form h2{
     color: #407c87;
     text-align: center;
 }
-.open{
-    display: flex;
-}
 .button-form{
     margin: .5rem;
     cursor: pointer;
@@ -91,4 +88,21 @@ form h2{
     display: grid;
     grid-template-columns: 50% 50%;
     justify-items: center;
+}
+.disabled-submit{
+    cursor: initial;
+    opacity: .5;
+}
+.disabled-submit:hover{
+    color: #fff;
+    background: #407c87;
+}
+.disabled-submit:active{
+    transform: none;
+}
+.form-buy-confirmation{
+    text-align: center;
+    font-size: 1.4rem;
+    color: #2d494e;
+    font-weight: 800;
 }

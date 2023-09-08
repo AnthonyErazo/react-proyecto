@@ -1,11 +1,13 @@
-import { addDoc, collection} from "firebase/firestore";
-import { useState } from "react";
-import { firestore } from "../../firebase/client";
-import Formulario from "../Formulario/Formulario";
-import { useCartContext } from "../../context/cart";
-import './Login.css';
 
-const Login = ({buyProducts,formRegister}) => {
+import { useEffect, useState } from 'react';
+import './Login.css';
+import { useCartContext } from '../../context/cart';
+import { firestore } from '../../firebase/client';
+import { addDoc, collection } from 'firebase/firestore';
+import Formulario from "../../components/Formulario/Formulario";
+import { Link } from 'react-router-dom';
+
+const Login = () => {
     const [nombre, setNombre] = useState("");
     const [apellido, setApellido] = useState("");
     const [direccion, setDireccion] = useState("");
@@ -13,6 +15,7 @@ const Login = ({buyProducts,formRegister}) => {
     const [pais, setPais] = useState("");
     const [correo, setCorreo] = useState("");
     const [errores, setErrores] = useState({});
+    const [formSubmit,setFormSubmit]=useState(false);
     const { clearCart,cartProduct } = useCartContext();
     const eliminarForm=()=>{
         setNombre("");
@@ -84,6 +87,7 @@ const Login = ({buyProducts,formRegister}) => {
             try {
                 addDoc(collection(firestore, "clientes"), nuevoDato);
                 clearCart();
+                setFormSubmit(true);
             } catch (error) {
                 console.error("Error al agregar el documento: ", error);
             }
@@ -95,7 +99,7 @@ const Login = ({buyProducts,formRegister}) => {
 
 
     return (
-        <div className={`form-buy-container ${buyProducts?'open':''}`}>
+        <div className='form-buy-container'>
             <div className="background">
                 <div className="shape"></div>
                 <div className="shape"></div>
@@ -108,41 +112,44 @@ const Login = ({buyProducts,formRegister}) => {
                         title={"nombre"}
                         handleChange={handleNombreChange}
                         errores={errores.nombre}
-                    />
+                        />
                     <Formulario
                         value={apellido}
                         title={"apellido"}
                         handleChange={handleApellidoChange}
                         errores={errores.apellido}
-                    />
+                        />
                     <Formulario
                         value={direccion}
                         title={"direccion"}
                         handleChange={handleDireccionChange}
                         errores={errores.direccion}
-                    />
+                        />
                     <Formulario
                         value={telefono}
                         title={"telefono"}
                         handleChange={handleTelefonoChange}
                         errores={errores.telefono}
-                    />
+                        />
                     <Formulario
                         value={pais}
                         title={"pais"}
                         handleChange={handlePaisChange}
                         errores={errores.pais}
-                    />
+                        />
                     <Formulario
                         value={correo}
                         title={"correo"}
                         handleChange={handleCorreoChange}
                         errores={errores.correo}
-                    />
+                        />
                     <div className="form-buttons">
-                        <button className="button-form" type="submit">Enviar</button>
-                        <button className="button-form" type="button" onClick={formRegister}>Cancelar</button>
+                        <button className={`button-form ${formSubmit?'disabled-submit':''}`} type={`${formSubmit?'button':'submit'}`}>Enviar</button>
+                        <Link to={'/carrito'}>
+                            <button className="button-form" type="button">Regresar</button>
+                        </Link>
                     </div>
+                    {formSubmit?<p className='form-buy-confirmation'>Enviado exitosamente!!</p>:<></>}
                 </form>
             </div>
         </div>

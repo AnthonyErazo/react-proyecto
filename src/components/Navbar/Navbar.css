@@ -2,7 +2,12 @@ nav {
     display: grid;
     grid-template-columns: 20% 80%;
     align-items: center;
-    background-color: #407c87;
+    background: linear-gradient(
+        to right,
+        #356068,
+        #65a3ad,
+        #356068
+    );
     position: sticky;
     top: 0;
     z-index: 100;

@@ -6,12 +6,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import NotFound from './routes/NotFound/NotFound.jsx'
 import Product from './routes/Product.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
+import ScrollTop from './components/ScrollTop/ScrollTop.jsx'
 import ModalProvider from './context/modal.jsx'
 import CartProvider from './context/cart.jsx'
 import Cart from './routes/Cart/Cart.jsx'
-import ScrollTop from './components/ScrollTop/ScrollTop.jsx'
 import ProductProvider from './context/product.jsx'
 import Footer from './components/Footer/Footer.jsx'
+import Login from './routes/Login/Login.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <Route path='/categoria/accesorio/:subCategoriaId' element={<App />} />
               <Route path='/producto/:productoId' element={<Product />} />
               <Route path='/carrito' element={<Cart />} />
+              <Route path='/formulario' element={<Login />} />
               <Route path='/*' element={<NotFound />} />
             </Routes>
             <ScrollTop />

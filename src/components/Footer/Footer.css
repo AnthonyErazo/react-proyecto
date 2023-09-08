@@ -3,7 +3,12 @@ footer{
     width: 100%;
     height: auto;
     padding: 50px 100px;
-    background: #407c87;
+    background: linear-gradient(
+        to right,
+        #356068,
+        #65a3ad,
+        #356068
+    );
 }
 footer .container{
     width: 100%;
