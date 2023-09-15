@@ -1,5 +1,3 @@
-import { useCartContext } from '../../context/cart'
-import { useProductContext } from '../../context/product';
 import EliminatedItem from '../Elimiteditem/EliminatedItem';
 import './ModalCartProduct.css'
 

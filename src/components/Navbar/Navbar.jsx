@@ -12,12 +12,12 @@ const Navbar = () => {
   const [clickMenu,setClickMenu]=useState(false);
   const [submenuItems, setSubmenuItems] = useState([]);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const {products}=useProductContext();
+  const {productsTotal}=useProductContext();
   const {cartNum,cartAside}=useCartContext();
   const location=useLocation();
   const categorys=new Set();
   const subCategorys=new Set();
-  products.forEach(element => {
+  productsTotal.forEach(element => {
     if(element.category=="accesorio"){
       subCategorys.add(element.subcategory);
     }else if(element.category!="zapatilla"){

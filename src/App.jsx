@@ -9,7 +9,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { firestore } from './firebase/client';
 
 function App() {
-  const { setProducts } = useProductContext();
+  const { setProducts,setProductsTotal } = useProductContext();
   const [isLoading, setIsLoading] = useState(true);
   const [productsCategory, setProductsCategory] = useState([]);
   const [isProductsSet, setIsProductsSet] = useState(false);
@@ -39,6 +39,9 @@ function App() {
           .map((doc) => doc.data())
           .filter((product) => product.stock > 0);
         setProductsCategory(filteredProducts);
+        if(location1.pathname==='/'){
+          setProductsTotal(filteredProducts);
+        }
     }).catch((error) => console.error(error));
 
   }, [params, location1]);
